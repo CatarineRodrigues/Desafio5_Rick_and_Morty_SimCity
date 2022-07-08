@@ -1,4 +1,4 @@
-package br.com.zup.rickandmorty.ui.home.view
+package br.com.zup.rickandmorty.ui.characterlist.view
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import br.com.zup.rickandmorty.databinding.FragmentHomeBinding
 
-class HomeFragment : Fragment() {
+class CharacterFragment : Fragment() {
     private lateinit var binding: FragmentHomeBinding
 
     override fun onCreateView(
