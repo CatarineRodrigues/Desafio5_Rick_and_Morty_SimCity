@@ -1,4 +1,4 @@
-package br.com.zup.rickandmorty.ui.splash
+package br.com.zup.rickandmorty.ui.splash.view
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
