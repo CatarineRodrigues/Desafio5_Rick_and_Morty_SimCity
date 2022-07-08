@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Rick and Morty</string>
+    <string name="image_description">Imagem do desenho Rick and Morty com o título escrito em cima de verde e abaixo os personagens Rick e Morty chegando em um planeta através de um portal verde</string>
 </resources>
