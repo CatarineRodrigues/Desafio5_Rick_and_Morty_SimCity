@@ -6,7 +6,7 @@ import retrofit2.http.Query
 
 interface CharacterAPI {
 
-    @GET("/character")
+    @GET("character")
     suspend fun getAllCharactersNetwork(
 //        @Query("image")
 //        image: String,
@@ -18,5 +18,7 @@ interface CharacterAPI {
 //        species: String?,
 //        @Query("gender")
 //        gender: String?,
-        ): CharacterResponse
+//        @Query("page")
+//        page: Int = 20,
+    ): CharacterResponse
 }

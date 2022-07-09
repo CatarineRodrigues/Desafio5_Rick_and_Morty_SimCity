@@ -13,8 +13,8 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class CharacterViewModel: ViewModel() {
-    private val _characterResponse = MutableLiveData<CharacterResponse>()
-    val characterResponse: LiveData<CharacterResponse> = _characterResponse
+    private val _characterResponse = MutableLiveData<List<CharacterResult>>()
+    val characterResponse: LiveData<List<CharacterResult>> = _characterResponse
 
     fun getAllCharactersNetwork() {
         viewModelScope.launch {
@@ -22,7 +22,7 @@ class CharacterViewModel: ViewModel() {
                 val response = withContext(Dispatchers.IO) {
                     RetrofitService.apiService.getAllCharactersNetwork()
                 }
-                _characterResponse.value = response
+                _characterResponse.value = response.characterResults
             } catch (ex: Exception) {
                 Log.i("Error", "Error ----- > ${ex.message}")
             }

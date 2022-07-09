@@ -9,7 +9,7 @@
         android:id="@+id/homeFragment"
         android:name="br.com.zup.rickandmorty.ui.characterlist.view.CharacterFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" >
+        tools:layout="@layout/fragment_character" >
         <action
             android:id="@+id/action_homeFragment_to_detailsFragment"
             app:destination="@id/detailsFragment" />

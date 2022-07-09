@@ -3,7 +3,6 @@ package br.com.zup.rickandmorty.ui.characterlist.view.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import br.com.zup.rickandmorty.URL_BASE_IMAGE
 import br.com.zup.rickandmorty.data.datasource.remote.model.CharacterResult
 import br.com.zup.rickandmorty.databinding.CharacterItemBinding
 import com.squareup.picasso.Picasso
@@ -19,7 +18,8 @@ class CharacterAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        TODO("Not yet implemented")
+        val character = characterList[position]
+        holder.showCharacterInfo(character)
     }
 
     override fun getItemCount() = characterList.size

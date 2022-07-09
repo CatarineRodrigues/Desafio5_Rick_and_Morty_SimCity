@@ -5,17 +5,15 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import br.com.zup.rickandmorty.data.datasource.remote.model.CharacterResult
-import br.com.zup.rickandmorty.databinding.FragmentHomeBinding
+import br.com.zup.rickandmorty.databinding.FragmentCharacterBinding
 import br.com.zup.rickandmorty.ui.characterlist.view.adapter.CharacterAdapter
 import br.com.zup.rickandmorty.ui.characterlist.viewmodel.CharacterViewModel
 
 class CharacterFragment : Fragment() {
-    private lateinit var binding: FragmentHomeBinding
+    private lateinit var binding: FragmentCharacterBinding
 
     private val adapter: CharacterAdapter by lazy {
         CharacterAdapter(arrayListOf()
@@ -30,12 +28,12 @@ class CharacterFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
-        binding = FragmentHomeBinding.inflate(inflater, container, false)
+        binding = FragmentCharacterBinding.inflate(inflater, container, false)
         return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override fun onResume() {
+        super.onResume()
         setUpRvMovieList()
         viewModel.getAllCharactersNetwork()
         intObserver()
@@ -43,7 +41,7 @@ class CharacterFragment : Fragment() {
 
     private fun intObserver() {
         viewModel.characterResponse.observe(this.viewLifecycleOwner) {
-            adapter.updateCharacterList(it.characterResults as MutableList<CharacterResult>)
+            adapter.updateCharacterList(it as MutableList<CharacterResult>)
         }
     }
 
