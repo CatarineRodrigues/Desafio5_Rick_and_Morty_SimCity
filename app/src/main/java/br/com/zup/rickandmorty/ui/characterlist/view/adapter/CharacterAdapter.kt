@@ -9,6 +9,7 @@ import com.squareup.picasso.Picasso
 
 class CharacterAdapter(
     private var characterList: MutableList<CharacterResult>,
+    private val clickCharacter: (movieResult: CharacterResult) -> Unit,
 ) : RecyclerView.Adapter<CharacterAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -20,6 +21,9 @@ class CharacterAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val character = characterList[position]
         holder.showCharacterInfo(character)
+        holder.binding.cvItem.setOnClickListener {
+            clickCharacter(character)
+        }
     }
 
     override fun getItemCount() = characterList.size

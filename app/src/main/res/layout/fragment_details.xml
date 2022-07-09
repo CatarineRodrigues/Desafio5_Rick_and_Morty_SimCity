@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/dark_blue"
     tools:context=".ui.details.view.DetailsFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -15,9 +16,9 @@
             android:layout_width="@dimen/size_250"
             android:layout_height="@dimen/size_250"
             android:layout_margin="@dimen/size_16"
-            app:layout_constraintBottom_toTopOf="@id/tv_name"
-            android:src="@drawable/rick_icon"
             android:scaleType="centerCrop"
+            android:src="@drawable/rick_icon"
+            app:layout_constraintBottom_toTopOf="@id/tv_name"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -30,6 +31,7 @@
             android:paddingHorizontal="@dimen/size_16"
             android:paddingLeft="@dimen/size_16"
             android:text="@string/name"
+            android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="@id/image_character"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -42,6 +44,7 @@
             android:layout_margin="@dimen/size_16"
             android:paddingLeft="@dimen/size_16"
             android:text="@string/status"
+            android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_name" />
@@ -53,6 +56,7 @@
             android:layout_margin="@dimen/size_16"
             android:paddingLeft="@dimen/size_16"
             android:text="@string/species"
+            android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_status" />
@@ -64,6 +68,7 @@
             android:layout_margin="@dimen/size_16"
             android:paddingLeft="@dimen/size_16"
             android:text="@string/gender"
+            android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

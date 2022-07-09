@@ -13,9 +13,9 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        acessarActionBar()
+        actionBarAccess()
     }
-    private fun acessarActionBar() {
+    private fun actionBarAccess() {
         supportActionBar?.setDisplayHomeAsUpEnabled(false)
         supportActionBar?.setTitle(R.string.app_name)
     }

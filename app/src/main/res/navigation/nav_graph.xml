@@ -3,20 +3,20 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/homeFragment">
+    app:startDestination="@id/characterFragment">
 
-    <fragment
-        android:id="@+id/homeFragment"
-        android:name="br.com.zup.rickandmorty.ui.characterlist.view.CharacterFragment"
-        android:label="fragment_home"
-        tools:layout="@layout/fragment_character" >
-        <action
-            android:id="@+id/action_homeFragment_to_detailsFragment"
-            app:destination="@id/detailsFragment" />
-    </fragment>
     <fragment
         android:id="@+id/detailsFragment"
         android:name="br.com.zup.rickandmorty.ui.details.view.DetailsFragment"
         android:label="fragment_details"
         tools:layout="@layout/fragment_details" />
+    <fragment
+        android:id="@+id/characterFragment"
+        android:name="br.com.zup.rickandmorty.ui.characterlist.view.CharacterFragment"
+        android:label="fragment_character"
+        tools:layout="@layout/fragment_character" >
+        <action
+            android:id="@+id/action_characterFragment_to_detailsFragment"
+            app:destination="@id/detailsFragment" />
+    </fragment>
 </navigation>
