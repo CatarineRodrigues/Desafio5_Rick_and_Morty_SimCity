@@ -1,4 +1,4 @@
-package br.com.zup.rickandmorty.data.datasource.local
+package br.com.zup.rickandmorty.data.datasource.local.dao
 
 import androidx.room.*
 import br.com.zup.rickandmorty.data.datasource.remote.model.CharacterResult
@@ -9,8 +9,8 @@ interface CharacterDAO {
     fun getAllCharacters(): List<CharacterResult>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    fun insertAllCharacterDB(listCharacter : List<CharacterResult>)
+    fun insertAllCharactersDB(listCharacter : List<CharacterResult>)
 
     @Update(onConflict = OnConflictStrategy.IGNORE)
-    fun updateCharacter(character: CharacterResult)
+    fun updateCharacterFavorite(character: CharacterResult)
 }
