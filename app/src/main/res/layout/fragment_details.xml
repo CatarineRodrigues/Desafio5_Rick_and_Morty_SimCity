@@ -16,6 +16,8 @@
             android:layout_height="@dimen/size_250"
             android:layout_margin="@dimen/size_16"
             app:layout_constraintBottom_toTopOf="@id/tv_name"
+            android:src="@drawable/rick_icon"
+            android:scaleType="centerCrop"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -25,7 +27,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/size_16"
+            android:paddingHorizontal="@dimen/size_16"
+            android:paddingLeft="@dimen/size_16"
             android:text="@string/name"
+            app:layout_constraintBottom_toBottomOf="@id/image_character"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/image_character" />
@@ -35,6 +40,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/size_16"
+            android:paddingLeft="@dimen/size_16"
             android:text="@string/status"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -45,6 +51,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/size_16"
+            android:paddingLeft="@dimen/size_16"
             android:text="@string/species"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -55,10 +62,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/size_16"
+            android:paddingLeft="@dimen/size_16"
             android:text="@string/gender"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_species" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
