@@ -8,15 +8,15 @@ interface CharacterAPI {
 
     @GET("/character")
     suspend fun getAllCharactersNetwork(
-        @Query("image")
-        image: String,
-        @Query("name")
-        name: String?,
-        @Query("status")
-        status: String?,
-        @Query("species")
-        species: String?,
-        @Query("gender")
-        gender: String?,
+//        @Query("image")
+//        image: String,
+//        @Query("name")
+//        name: String?,
+//        @Query("status")
+//        status: String?,
+//        @Query("species")
+//        species: String?,
+//        @Query("gender")
+//        gender: String?,
         ): CharacterResponse
 }
