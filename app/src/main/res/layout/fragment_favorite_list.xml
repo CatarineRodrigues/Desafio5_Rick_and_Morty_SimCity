@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.characterlist.view.CharacterFragment">
+    tools:context=".ui.favoritelist.FavoriteListFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_characterlist"
@@ -14,21 +14,9 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
         app:spanCount="2"
-        app:layout_constraintTop_toTopOf="parent"
         tools:listitem="@layout/character_item" />
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floating_action_button"
-        android:layout_width="@dimen/size_56"
-        android:layout_height="@dimen/size_56"
-        android:layout_margin="@dimen/size_16"
-        android:backgroundTint="@color/dark_blue"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:maxImageSize="40dp"
-        app:srcCompat="@drawable/ic_disfavorite_star"
-        app:tint="@android:color/white" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
