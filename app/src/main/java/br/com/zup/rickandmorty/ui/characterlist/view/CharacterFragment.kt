@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.NavHostFragment
@@ -16,6 +17,7 @@ import br.com.zup.rickandmorty.databinding.FragmentCharacterBinding
 import br.com.zup.rickandmorty.ui.characterlist.view.adapter.CharacterAdapter
 import br.com.zup.rickandmorty.ui.characterlist.viewmodel.CharacterViewModel
 import br.com.zup.rickandmorty.ui.home.view.HomeActivity
+import br.com.zup.rickandmorty.ui.viewstate.ViewState
 
 class CharacterFragment : Fragment() {
     private lateinit var binding: FragmentCharacterBinding
@@ -45,22 +47,16 @@ class CharacterFragment : Fragment() {
     override fun onResume() {
         super.onResume()
         setUpRvMovieList()
-        viewModel.getAllCharactersNetwork()
+        viewModel.getAllCharacters()
         intObserver()
     }
 
     private fun intObserver() {
         viewModel.characterResponse.observe(this.viewLifecycleOwner) {
-            adapter.updateCharacterList(it as MutableList<CharacterResult>)
-        }
-    }
-
- /*   private fun initObserver() {
-        viewModel.movieListState.observe(this.viewLifecycleOwner) {
 
             when (it) {
                 is ViewState.Success -> {
-                    adapter.updateMovieList(it.data.toMutableList())
+                    adapter.updateCharacterList(it.data.toMutableList())
                 }
                 is ViewState.Error -> {
                     Toast.makeText(
@@ -72,37 +68,7 @@ class CharacterFragment : Fragment() {
                 else -> {}
             }
         }
-
-        viewModel.movieFavoritedState.observe(this.viewLifecycleOwner) {
-            when (it) {
-                is ViewState.Success -> {
-                    Toast.makeText(
-                        context,
-                        "Filme ${it.data.title} foi favoritado com sucesso!",
-                        Toast.LENGTH_LONG
-                    ).show()
-                }
-                is ViewState.Error -> {
-                    Toast.makeText(
-                        context,
-                        "${it.throwable.message}",
-                        Toast.LENGTH_LONG
-                    ).show()
-                }
-                else -> {}
-            }
-        }
-
-        viewModel.loading.observe(this.viewLifecycleOwner) {
-            when (it) {
-                is ViewState.Loading -> {
-                    binding.pbLoading.isVisible = it.loading == true
-                }
-                else -> {}
-            }
-        }
     }
-    */
 
     private fun setUpRvMovieList() {
         binding.rvCharacterlist.adapter = adapter

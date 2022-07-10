@@ -1,29 +1,31 @@
 package br.com.zup.rickandmorty.ui.characterlist.viewmodel
 
+import android.app.Application
 import android.util.Log
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import br.com.zup.rickandmorty.data.datasource.remote.RetrofitService
-import br.com.zup.rickandmorty.data.datasource.remote.model.CharacterResponse
 import br.com.zup.rickandmorty.data.datasource.remote.model.CharacterResult
+import br.com.zup.rickandmorty.domain.usecase.CharacterUseCase
+import br.com.zup.rickandmorty.ui.viewstate.ViewState
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class CharacterViewModel: ViewModel() {
-    private val _characterResponse = MutableLiveData<List<CharacterResult>>()
-    val characterResponse: LiveData<List<CharacterResult>> = _characterResponse
+class CharacterViewModel(application: Application) : AndroidViewModel(application) {
+    private val characterUseCase = CharacterUseCase(application)
+    private val _characterResponse = MutableLiveData<ViewState<List<CharacterResult>>>()
+    val characterResponse: LiveData<ViewState<List<CharacterResult>>> = _characterResponse
 
-    fun getAllCharactersNetwork() {
+    fun getAllCharacters() {
         viewModelScope.launch {
             try {
                 val response = withContext(Dispatchers.IO) {
-                    RetrofitService.apiService.getAllCharactersNetwork()
+                    characterUseCase.getAllCharactersNetwork()
                 }
-                _characterResponse.value = response.characterResults
+                _characterResponse.value = response
             } catch (ex: Exception) {
+                _characterResponse.value =
+                    ViewState.Error(Throwable("Não foi possível carregar a lista vinda da internet!"))
                 Log.i("Error", "Error ----- > ${ex.message}")
             }
         }
