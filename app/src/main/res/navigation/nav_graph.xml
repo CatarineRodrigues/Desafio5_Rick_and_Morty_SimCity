@@ -24,7 +24,7 @@
     </fragment>
     <fragment
         android:id="@+id/favoriteListFragment"
-        android:name="br.com.zup.rickandmorty.ui.favoritelist.FavoriteListFragment"
+        android:name="br.com.zup.rickandmorty.ui.favoritelist.view.FavoriteListFragment"
         android:label="fragment_favorite_list"
         tools:layout="@layout/fragment_favorite_list" >
         <action

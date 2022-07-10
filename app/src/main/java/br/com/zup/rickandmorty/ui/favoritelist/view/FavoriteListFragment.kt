@@ -1,4 +1,4 @@
-package br.com.zup.rickandmorty.ui.favoritelist
+package br.com.zup.rickandmorty.ui.favoritelist.view
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
