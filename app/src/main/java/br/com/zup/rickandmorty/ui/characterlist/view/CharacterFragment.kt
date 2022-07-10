@@ -23,9 +23,7 @@ class CharacterFragment : Fragment() {
     private lateinit var binding: FragmentCharacterBinding
 
     private val adapter: CharacterAdapter by lazy {
-        CharacterAdapter(arrayListOf(), this::goToCharacterDetail
-//            , this::favoritedMovie
-        )
+        CharacterAdapter(arrayListOf(), this::goToCharacterDetail)
     }
     private val viewModel: CharacterViewModel by lazy {
         ViewModelProvider(this)[CharacterViewModel::class.java]
@@ -42,6 +40,7 @@ class CharacterFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         actionBarAccess()
+        goToFavoriteList()
     }
 
     override fun onResume() {
@@ -59,11 +58,23 @@ class CharacterFragment : Fragment() {
                     adapter.updateCharacterList(it.data.toMutableList())
                 }
                 is ViewState.Error -> {
+                    Toast.makeText(context, "${it.throwable.message}", Toast.LENGTH_LONG).show()
+                }
+                else -> {}
+            }
+        }
+
+        viewModel.characterFavoritedState.observe(this.viewLifecycleOwner) {
+            when (it) {
+                is ViewState.Success -> {
                     Toast.makeText(
                         context,
-                        "${it.throwable.message}",
+                        "O personagem '${it.data.name}' foi favoritado com sucesso!",
                         Toast.LENGTH_LONG
                     ).show()
+                }
+                is ViewState.Error -> {
+                    Toast.makeText(context, "${it.throwable.message}", Toast.LENGTH_LONG).show()
                 }
                 else -> {}
             }
@@ -86,5 +97,13 @@ class CharacterFragment : Fragment() {
     private fun actionBarAccess() {
         (activity as HomeActivity).supportActionBar?.setDisplayHomeAsUpEnabled(false)
         (activity as HomeActivity).supportActionBar?.setTitle(R.string.app_name)
+    }
+
+    private fun goToFavoriteList(){
+        binding.floatingActionButton.setOnClickListener {
+            NavHostFragment.findNavController(this).navigate(
+                R.id.action_characterFragment_to_favoriteListFragment
+            )
+        }
     }
 }

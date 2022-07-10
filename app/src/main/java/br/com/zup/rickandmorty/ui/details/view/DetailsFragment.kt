@@ -45,5 +45,4 @@ class DetailsFragment : Fragment() {
     private fun actionBarAccess() {
         (activity as HomeActivity).supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
-
 }

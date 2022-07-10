@@ -9,7 +9,7 @@ import com.squareup.picasso.Picasso
 
 class CharacterAdapter(
     private var characterList: MutableList<CharacterResult>,
-    private val clickCharacter: (movieResult: CharacterResult) -> Unit,
+    private val clickCharacter: (characterResult: CharacterResult) -> Unit,
 ) : RecyclerView.Adapter<CharacterAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
