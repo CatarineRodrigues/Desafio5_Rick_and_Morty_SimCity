@@ -12,6 +12,6 @@ class CharacterRepository(private val characterDAO: CharacterDAO) {
     suspend fun insertAllCharactersDB(characterList: List<CharacterResult>) =
         characterDAO.insertAllCharactersDB(characterList)
 
-    suspend fun geAllCharactersNetwork(): CharacterResponse =
+    suspend fun getAllCharactersNetwork(): CharacterResponse =
         RetrofitService.apiService.getAllCharactersNetwork()
 }
