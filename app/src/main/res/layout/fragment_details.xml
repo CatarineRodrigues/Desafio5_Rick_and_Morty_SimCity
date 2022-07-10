@@ -23,13 +23,22 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <ImageView
+            android:layout_width="@dimen/size_40"
+            android:layout_height="@dimen/size_40"
+            android:layout_margin="@dimen/size_16"
+            android:src="@drawable/ic_disfavorite_star"
+            app:layout_constraintBottom_toBottomOf="@id/tv_name"
+            app:layout_constraintEnd_toEndOf="@id/tv_name"
+            app:layout_constraintTop_toTopOf="@id/tv_name" />
+
         <TextView
             android:id="@+id/tv_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/size_16"
-            android:paddingHorizontal="@dimen/size_16"
             android:paddingLeft="@dimen/size_16"
+            android:paddingEnd="@dimen/size_56"
             android:text="@string/name"
             android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="@id/image_character"
