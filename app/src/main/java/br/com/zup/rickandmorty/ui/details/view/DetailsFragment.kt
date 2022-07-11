@@ -27,11 +27,13 @@ class DetailsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         actionBarAccess()
         getCharacterDetail()
+        favoriteCharacter()
     }
 
-    private fun getCharacterDetail() {
-        val character = arguments?.getParcelable<CharacterResult>(CHARACTER_KEY)
+    private fun getCharacter(): CharacterResult? = arguments?.getParcelable(CHARACTER_KEY)
 
+    private fun getCharacterDetail() {
+        val character = getCharacter()
         character?.let {
             Picasso.get().load(it.image).into(binding.imageCharacter)
             binding.tvName.text = NAME + it.name
@@ -42,7 +44,29 @@ class DetailsFragment : Fragment() {
             (activity as HomeActivity).supportActionBar?.title = it.name
         }
     }
+
     private fun actionBarAccess() {
         (activity as HomeActivity).supportActionBar?.setDisplayHomeAsUpEnabled(true)
+    }
+
+    private fun favoriteCharacter() {
+        val character = getCharacter()
+        character?.let {
+            binding.icFavorite.setOnClickListener {
+                setFavoriteStarColor(character)
+            }
+        }
+    }
+
+    private fun setFavoriteStarColor(character: CharacterResult) {
+        binding.icFavorite.setImageDrawable(
+            ContextCompat.getDrawable(
+                binding.root.context,
+                if (!character.favorited)
+                    R.drawable.ic_favorite_star
+                else
+                    R.drawable.ic_disfavorite_star
+            )
+        )
     }
 }

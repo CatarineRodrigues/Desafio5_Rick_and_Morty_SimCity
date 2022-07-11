@@ -64,7 +64,7 @@ class CharacterFragment : Fragment() {
             }
         }
 
-        viewModel.characterFavoritedState.observe(this.viewLifecycleOwner) {
+/*        viewModel.characterFavoritedState.observe(this.viewLifecycleOwner) {
             when (it) {
                 is ViewState.Success -> {
                     Toast.makeText(
@@ -78,7 +78,7 @@ class CharacterFragment : Fragment() {
                 }
                 else -> {}
             }
-        }
+        }*/
     }
 
     private fun setUpRvMovieList() {

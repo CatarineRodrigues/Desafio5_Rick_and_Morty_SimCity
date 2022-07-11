@@ -24,6 +24,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
+            android:id="@+id/ic_favorite"
             android:layout_width="@dimen/size_40"
             android:layout_height="@dimen/size_40"
             android:layout_margin="@dimen/size_16"

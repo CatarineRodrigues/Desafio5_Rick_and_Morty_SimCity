@@ -29,7 +29,7 @@ class CharacterUseCase(application: Application) {
         }
     }
 
-    suspend fun updateCharacterFavorite(character: CharacterResult): ViewState<CharacterResult>{
+    suspend fun updateCharactersFavorite(character: CharacterResult): ViewState<CharacterResult>{
         return try {
             characterRepository.updateCharacterFavorite(character)
             ViewState.Success(character)
@@ -37,4 +37,7 @@ class CharacterUseCase(application: Application) {
             ViewState.Error(Exception("Não foi possícel atualizar o status do personagem"))
         }
     }
+
+    suspend fun getAllCharactersFavorites
+
 }
