@@ -3,7 +3,6 @@ package br.com.zup.rickandmorty.ui.favoritelist.viewmodel
 import android.app.Application
 import android.util.Log
 import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import br.com.zup.rickandmorty.data.datasource.remote.model.CharacterResult

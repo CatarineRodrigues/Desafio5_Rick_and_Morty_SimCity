@@ -2,9 +2,7 @@ package br.com.zup.rickandmorty.ui.favoritelist.view.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
-import br.com.zup.rickandmorty.R
 import br.com.zup.rickandmorty.data.datasource.remote.model.CharacterResult
 import br.com.zup.rickandmorty.databinding.CharacterItemBinding
 import com.squareup.picasso.Picasso

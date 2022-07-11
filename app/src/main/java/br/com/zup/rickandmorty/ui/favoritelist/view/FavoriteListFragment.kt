@@ -13,8 +13,6 @@ import br.com.zup.rickandmorty.CHARACTER_KEY
 import br.com.zup.rickandmorty.R
 import br.com.zup.rickandmorty.data.datasource.remote.model.CharacterResult
 import br.com.zup.rickandmorty.databinding.FragmentFavoriteListBinding
-import br.com.zup.rickandmorty.ui.characterlist.view.adapter.CharacterAdapter
-import br.com.zup.rickandmorty.ui.characterlist.viewmodel.CharacterViewModel
 import br.com.zup.rickandmorty.ui.favoritelist.view.adapter.FavoriteListAdapter
 import br.com.zup.rickandmorty.ui.favoritelist.viewmodel.FavoriteListViewModel
 import br.com.zup.rickandmorty.ui.home.view.HomeActivity
