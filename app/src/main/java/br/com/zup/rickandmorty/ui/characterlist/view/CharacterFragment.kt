@@ -45,7 +45,7 @@ class CharacterFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
-        setUpRvMovieList()
+        setRecyclerView()
         viewModel.getAllCharacters()
         intObserver()
     }
@@ -81,7 +81,7 @@ class CharacterFragment : Fragment() {
         }*/
     }
 
-    private fun setUpRvMovieList() {
+    private fun setRecyclerView() {
         binding.rvCharacterlist.adapter = adapter
         binding.rvCharacterlist.layoutManager = GridLayoutManager(context, 2)
     }

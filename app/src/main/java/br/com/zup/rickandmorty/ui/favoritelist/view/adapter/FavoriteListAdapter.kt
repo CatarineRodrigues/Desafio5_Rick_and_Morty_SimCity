@@ -10,8 +10,8 @@ import br.com.zup.rickandmorty.databinding.CharacterItemBinding
 import com.squareup.picasso.Picasso
 
 class FavoriteListAdapter(
-    private var characterList: MutableList<CharacterResult>,
-    private val clickCharacter: (characterResult: CharacterResult) -> Unit,
+    private var characterFacoritedList: MutableList<CharacterResult>,
+    private val clickCharacterFavorited: (characterResult: CharacterResult) -> Unit,
 ) : RecyclerView.Adapter<FavoriteListAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -21,17 +21,17 @@ class FavoriteListAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val character = characterList[position]
+        val character = characterFacoritedList[position]
         holder.showMovieInfo(character)
         holder.binding.cvItem.setOnClickListener {
-            clickCharacter(character)
+            clickCharacterFavorited(character)
         }
     }
 
-    override fun getItemCount() = characterList.size
+    override fun getItemCount() = characterFacoritedList.size
 
     fun updateFavoriteList(newList: MutableList<CharacterResult>) {
-        characterList = newList
+        characterFacoritedList = newList
         notifyDataSetChanged()
     }
 

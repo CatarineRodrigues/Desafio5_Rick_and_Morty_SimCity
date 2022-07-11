@@ -21,12 +21,12 @@ class FavoriteListViewModel(application: Application) : AndroidViewModel(applica
         viewModelScope.launch {
             try {
                 val response = withContext(Dispatchers.IO) {
-                    characterUseCase.getAllCharactersNetwork()
+                    characterUseCase.getAllCharactersFavorited()
                 }
                 characterListFavoriteState.value = response
             } catch (ex: Exception) {
                 characterListFavoriteState.value =
-                    ViewState.Error(Throwable("Não foi carregar a lista de favoritos!"))
+                    ViewState.Error(Throwable("Não foi possível carregar a lista de favoritos!"))
                 Log.i("Error", "Error ----- > ${ex.message}")
             }
         }

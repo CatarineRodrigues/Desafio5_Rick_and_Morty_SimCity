@@ -38,6 +38,13 @@ class CharacterUseCase(application: Application) {
         }
     }
 
-    suspend fun getAllCharactersFavorites
+    suspend fun getAllCharactersFavorited(): ViewState<List<CharacterResult>> {
+        return try {
+            val character = characterRepository.getAllCharactersFavorited()
+            ViewState.Success(character)
+        } catch (ex: Exception){
+            ViewState.Error(Exception("Não foi possível carregar a lista de favoritos!"))
+        }
+    }
 
 }

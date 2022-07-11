@@ -17,7 +17,7 @@ class CharacterRepository(private val characterDAO: CharacterDAO) {
 
     suspend fun updateCharacterFavorite(character: CharacterResult){
         characterDAO.updateCharacterFavorite(character)
-
-        suspend fun getAllCharactersFavorited(): List<CharacterResult> = characterDAO.getAllCharactersFavorited()
     }
+
+    suspend fun getAllCharactersFavorited(): List<CharacterResult> = characterDAO.getAllCharactersFavorited()
 }
