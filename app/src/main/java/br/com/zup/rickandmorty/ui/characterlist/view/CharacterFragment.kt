@@ -63,22 +63,6 @@ class CharacterFragment : Fragment() {
                 else -> {}
             }
         }
-
-/*        viewModel.characterFavoritedState.observe(this.viewLifecycleOwner) {
-            when (it) {
-                is ViewState.Success -> {
-                    Toast.makeText(
-                        context,
-                        "O personagem '${it.data.name}' foi favoritado com sucesso!",
-                        Toast.LENGTH_LONG
-                    ).show()
-                }
-                is ViewState.Error -> {
-                    Toast.makeText(context, "${it.throwable.message}", Toast.LENGTH_LONG).show()
-                }
-                else -> {}
-            }
-        }*/
     }
 
     private fun setRecyclerView() {

@@ -14,6 +14,6 @@ interface CharacterDAO {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     fun insertAllCharactersDB(listCharacter : List<CharacterResult>)
 
-    @Update(onConflict = OnConflictStrategy.REPLACE)
+    @Update(onConflict = OnConflictStrategy.IGNORE)
     fun updateCharacterFavorite(character: CharacterResult)
 }

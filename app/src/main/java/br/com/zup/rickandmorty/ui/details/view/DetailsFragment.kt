@@ -5,15 +5,22 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.ViewModelProvider
 import br.com.zup.rickandmorty.*
 import br.com.zup.rickandmorty.data.datasource.remote.model.CharacterResult
 import br.com.zup.rickandmorty.databinding.FragmentDetailsBinding
+import br.com.zup.rickandmorty.ui.details.viewmodel.DetailsViewModel
 import br.com.zup.rickandmorty.ui.home.view.HomeActivity
+import br.com.zup.rickandmorty.ui.viewstate.ViewState
 import com.squareup.picasso.Picasso
 
 class DetailsFragment : Fragment() {
     private lateinit var binding: FragmentDetailsBinding
+    private val viewModel: DetailsViewModel by lazy {
+        ViewModelProvider(this)[DetailsViewModel::class.java]
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -28,6 +35,7 @@ class DetailsFragment : Fragment() {
         actionBarAccess()
         getCharacterDetail()
         favoriteCharacter()
+        intObserver()
     }
 
     private fun getCharacter(): CharacterResult? = arguments?.getParcelable(CHARACTER_KEY)
@@ -42,6 +50,7 @@ class DetailsFragment : Fragment() {
             binding.tvGender.text = GENDER + it.gender
 
             (activity as HomeActivity).supportActionBar?.title = it.name
+            setStarColor(character)
         }
     }
 
@@ -53,25 +62,51 @@ class DetailsFragment : Fragment() {
         val character = getCharacter()
         character?.let {
             binding.icFavorite.setOnClickListener {
-                if (!character.favorited){
-                    setFavoriteStarColor()
+                setStarColor(character)
+                character.favorited = !character.favorited
+                updateCharactersFavorite(character)
+                if (character.favorited) {
+                    Toast.makeText(context,
+                        "O personagem '${character.name}' foi favoritado com sucesso!",
+                        Toast.LENGTH_LONG
+                    ).show()
                 } else {
-                    setDisfavoriteStarColor()
-                    character.favorited = !character.favorited
+                    updateCharactersFavorite(character)
+                    Toast.makeText(context,
+                        "O personagem '${character.name}' foi desfavoritado",
+                        Toast.LENGTH_LONG
+                    ).show()
                 }
             }
         }
     }
 
-    private fun setFavoriteStarColor() {
-        binding.icFavorite.setImageDrawable(
-            ContextCompat.getDrawable(binding.root.context, R.drawable.ic_favorite_star)
-        )
+    private fun updateCharactersFavorite(characterResult: CharacterResult) {
+        viewModel.updateCharactersFavorite(characterResult)
     }
 
-    private fun setDisfavoriteStarColor() {
+    private fun intObserver() {
+        viewModel.characterListFavoriteState.observe(this.viewLifecycleOwner) {
+            when (it) {
+                is ViewState.Success -> {
+                    setStarColor(it.data)
+                }
+                is ViewState.Error -> {
+                    Toast.makeText(context, "${it.throwable.message}", Toast.LENGTH_LONG).show()
+                }
+                else -> {}
+            }
+        }
+    }
+
+    private fun setStarColor(character: CharacterResult) {
         binding.icFavorite.setImageDrawable(
-            ContextCompat.getDrawable(binding.root.context, R.drawable.ic_disfavorite_star)
+            ContextCompat.getDrawable(binding.root.context,
+                if (character.favorited)
+                    R.drawable.ic_favorite_star
+                else
+                    R.drawable.ic_disfavorite_star
+            )
         )
     }
 }

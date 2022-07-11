@@ -63,35 +63,27 @@ class FavoriteListFragment : Fragment() {
                     adapter.updateFavoriteList(it.data.toMutableList())
                 }
                 is ViewState.Error -> {
-                    Toast.makeText(
-                        context,
-                        "${it.throwable.message}",
-                        Toast.LENGTH_LONG
-                    ).show()
+                    Toast.makeText(context, "${it.throwable.message}", Toast.LENGTH_LONG).show()
                 }
                 else -> {}
             }
         }
-
-        viewModel.characterListFavoriteState.observe(this.viewLifecycleOwner) {
-            when (it) {
-                is ViewState.Success -> {
-                    Toast.makeText(
-                        context,
-                        "Filme ${it.data[position].name} foi desfavoritado!",
-                        Toast.LENGTH_LONG
-                    ).show()
-                }
-                is ViewState.Error -> {
-                    Toast.makeText(
-                        context,
-                        "${it.throwable.message}",
-                        Toast.LENGTH_LONG
-                    ).show()
-                }
-                else -> {}
-            }
-        }
+//
+//        viewModel.characterListFavoriteState.observe(this.viewLifecycleOwner) {
+//            when (it) {
+//                is ViewState.Success -> {
+//                    Toast.makeText(
+//                        context,
+//                        "Personagem ${it.data} foi desfavoritado!",
+//                        Toast.LENGTH_LONG
+//                    ).show()
+//                }
+//                is ViewState.Error -> {
+//                    Toast.makeText(context, "${it.throwable.message}", Toast.LENGTH_LONG).show()
+//                }
+//                else -> {}
+//            }
+//        }
     }
 
     private fun setRecyclerView() {
@@ -106,5 +98,4 @@ class FavoriteListFragment : Fragment() {
             R.id.action_favoriteListFragment_to_detailsFragment, bundle
         )
     }
-
 }
