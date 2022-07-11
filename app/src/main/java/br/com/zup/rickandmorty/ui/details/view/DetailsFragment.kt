@@ -53,20 +53,25 @@ class DetailsFragment : Fragment() {
         val character = getCharacter()
         character?.let {
             binding.icFavorite.setOnClickListener {
-                setFavoriteStarColor(character)
+                if (!character.favorited){
+                    setFavoriteStarColor()
+                } else {
+                    setDisfavoriteStarColor()
+                    character.favorited = !character.favorited
+                }
             }
         }
     }
 
-    private fun setFavoriteStarColor(character: CharacterResult) {
+    private fun setFavoriteStarColor() {
         binding.icFavorite.setImageDrawable(
-            ContextCompat.getDrawable(
-                binding.root.context,
-                if (!character.favorited)
-                    R.drawable.ic_favorite_star
-                else
-                    R.drawable.ic_disfavorite_star
-            )
+            ContextCompat.getDrawable(binding.root.context, R.drawable.ic_favorite_star)
+        )
+    }
+
+    private fun setDisfavoriteStarColor() {
+        binding.icFavorite.setImageDrawable(
+            ContextCompat.getDrawable(binding.root.context, R.drawable.ic_disfavorite_star)
         )
     }
 }

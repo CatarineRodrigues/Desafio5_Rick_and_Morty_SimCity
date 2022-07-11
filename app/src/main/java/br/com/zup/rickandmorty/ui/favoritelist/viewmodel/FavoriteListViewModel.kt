@@ -14,7 +14,7 @@ import kotlinx.coroutines.withContext
 
 class FavoriteListViewModel(application: Application) : AndroidViewModel(application)  {
     private val characterUseCase = CharacterUseCase(application)
-    private val characterListFavoriteState = MutableLiveData<ViewState<List<CharacterResult>>>()
+    val characterListFavoriteState = MutableLiveData<ViewState<List<CharacterResult>>>()
 
     fun getAllCharactersFavorited() {
         viewModelScope.launch {
