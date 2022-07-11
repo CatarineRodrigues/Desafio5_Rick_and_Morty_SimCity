@@ -6,4 +6,5 @@
     <string name="status">Status:</string>
     <string name="species">Espécie:</string>
     <string name="gender">Gênero:</string>
+    <string name="character_name">Nome personageme</string>
 </resources>

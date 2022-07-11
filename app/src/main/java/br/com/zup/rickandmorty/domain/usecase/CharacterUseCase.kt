@@ -1,6 +1,9 @@
 package br.com.zup.rickandmorty.domain.usecase
 
 import android.app.Application
+import br.com.zup.rickandmorty.GET_DB_MSG_ERROR
+import br.com.zup.rickandmorty.GET_FAVORITED_LIST_MSG_ERROR
+import br.com.zup.rickandmorty.UPDATE_STATUS_MSG_ERROR
 import br.com.zup.rickandmorty.data.datasource.local.CharacterDatabase
 import br.com.zup.rickandmorty.data.datasource.remote.model.CharacterResult
 import br.com.zup.rickandmorty.domain.repository.CharacterRepository
@@ -15,7 +18,7 @@ class CharacterUseCase(application: Application) {
             val character = characterRepository.getAllCharacters()
             ViewState.Success(character)
         } catch (ex: Exception) {
-            ViewState.Error(Exception("Não foi possível carregar a lista de personagens do Banco de Dados!"))
+            ViewState.Error(Exception(GET_DB_MSG_ERROR))
         }
     }
 
@@ -35,7 +38,7 @@ class CharacterUseCase(application: Application) {
             characterRepository.updateCharacterFavorite(character)
             ViewState.Success(character)
         } catch (ex: Exception){
-            ViewState.Error(Exception("Não foi possícel atualizar o status do personagem"))
+            ViewState.Error(Exception(UPDATE_STATUS_MSG_ERROR))
         }
     }
 
@@ -44,8 +47,7 @@ class CharacterUseCase(application: Application) {
             val character = characterRepository.getAllCharactersFavorited()
             ViewState.Success(character)
         } catch (ex: Exception){
-            ViewState.Error(Exception("Não foi possível carregar a lista de favoritos!"))
+            ViewState.Error(Exception(GET_FAVORITED_LIST_MSG_ERROR))
         }
     }
-
 }

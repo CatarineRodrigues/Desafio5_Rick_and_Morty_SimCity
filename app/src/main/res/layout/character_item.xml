@@ -29,7 +29,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="@color/dark_blue"
-            android:text="Nome personageme"
+            android:text="@string/character_name"
             android:textAlignment="center"
             android:layout_margin="@dimen/size_8"
             android:textColor="@color/white"

@@ -41,5 +41,4 @@ class CharacterAdapter(
                 .into(binding.imageCharacter)
         }
     }
-
 }

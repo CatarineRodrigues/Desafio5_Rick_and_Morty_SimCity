@@ -4,6 +4,7 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import br.com.zup.rickandmorty.UPDATE_STATUS_MSG_ERROR
 import br.com.zup.rickandmorty.data.datasource.remote.model.CharacterResult
 import br.com.zup.rickandmorty.domain.usecase.CharacterUseCase
 import br.com.zup.rickandmorty.ui.viewstate.ViewState
@@ -24,7 +25,7 @@ class DetailsViewModel(application: Application) : AndroidViewModel(application)
                 characterListFavoriteState.value = response
             } catch (ex: Exception) {
                 characterListFavoriteState.value =
-                    ViewState.Error(Throwable("Não foi possivel atualizar o filme"))
+                    ViewState.Error(Throwable(UPDATE_STATUS_MSG_ERROR))
             }
         }
     }

@@ -5,7 +5,7 @@ import br.com.zup.rickandmorty.data.datasource.remote.model.CharacterResult
 
 @Dao
 interface CharacterDAO {
-    @Query("SELECT * FROM character ORDER BY name ASC")
+    @Query("SELECT * FROM character ORDER BY id ASC")
     fun getAllCharacters(): List<CharacterResult>
 
     @Query("SELECT * FROM character WHERE favorited = 1")

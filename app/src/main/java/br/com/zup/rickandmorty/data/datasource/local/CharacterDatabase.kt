@@ -4,10 +4,11 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import br.com.zup.rickandmorty.CHARACTER_DATABASE
 import br.com.zup.rickandmorty.data.datasource.local.dao.CharacterDAO
 import br.com.zup.rickandmorty.data.datasource.remote.model.CharacterResult
 
-@Database(entities = [CharacterResult::class], version = 1)
+@Database(entities = [CharacterResult::class], version = 2)
 abstract class CharacterDatabase: RoomDatabase() {
     abstract fun characterDao(): CharacterDAO
 
@@ -24,7 +25,7 @@ abstract class CharacterDatabase: RoomDatabase() {
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
                     CharacterDatabase::class.java,
-                    "character_database"
+                    CHARACTER_DATABASE
                 ).fallbackToDestructiveMigration()
                     .build()
                 INSTANCE = instance

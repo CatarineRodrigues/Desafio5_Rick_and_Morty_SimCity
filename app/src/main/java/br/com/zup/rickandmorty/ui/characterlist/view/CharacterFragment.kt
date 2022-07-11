@@ -83,7 +83,7 @@ class CharacterFragment : Fragment() {
         (activity as HomeActivity).supportActionBar?.setTitle(R.string.app_name)
     }
 
-    private fun goToFavoriteList(){
+    private fun goToFavoriteList() {
         binding.floatingActionButton.setOnClickListener {
             NavHostFragment.findNavController(this).navigate(
                 R.id.action_characterFragment_to_favoriteListFragment
